@@ -1,5 +1,6 @@
 import os
 import unittest
+import csv
 
 from flask.cli import FlaskGroup
 
@@ -21,10 +22,14 @@ def seed_db():
    db.session.add(Lender(4, "Golden National Bank", "561-A Main Street", "Golden", "CO", "80401", "3035551212"))
    db.session.add(Lender(5, "Island Lending", "100 Marginal Way", "Huntington", "NY", "11743", "6315551212"))
 
-   db.session.add(Loan(1, 1, "Hui", "Zamorano", 0.075, 5000, 3197.35, 19, 48, 120.89, "05/31/2020"))
-   db.session.add(Loan(2, 1, "Wilma", "Cecena", 0.05, 10000, 6278.40, 19, 48, 230.29, "05/31/2020"))
+   with open('./loans.csv', newline='') as f:
+       reader = csv.reader(f)
+       for row in reader:
+           db.session.add(Loan(
+              int(row[0]), int(row[1]), row[2], row[3], float(row[4]), int(row[5]), 
+              float(row[6]), int(row[7]), int(row[8]), float(row[9]), row[10]
+           ))
 
-   db.session.add(Loan(7, 2, "Steve", "Alexander", 0.075, 20000, 12789.92, 19, 48, 483.58, "05/31/2020"))
    db.session.commit()
 
 @cli.command("run_tests")

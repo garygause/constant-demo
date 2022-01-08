@@ -7,3 +7,12 @@ docker-compose up -d --build
 http://localhost:1337
 
 http://localhost:1337/api
+
+docker-compose down -v
+
+
+Notes:
+
+- loans file contains a duplicate primary, 25, and is missing the key 24.  assumed it was a typo error, not an actual challenge, and changed the entry aftr 23 to 24.  if this was real world, would have to discuss data with db or biz owners, but primary keys should not be pre-determined in any case.
+
+

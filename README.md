@@ -4,6 +4,8 @@ To run:
 
 docker-compose up -d --build
 
+docker-compose exec api python manage.py run_tests
+
 http://localhost:1337
 
 http://localhost:1337/api

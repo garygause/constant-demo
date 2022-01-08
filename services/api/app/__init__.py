@@ -10,7 +10,7 @@ ma = Marshmallow(app)
 
 class Lender(db.Model):
    """ Lender Model """
-   __tablename__ = "lender"
+   __tablename__ = "lenders"
 
    id = db.Column(db.Integer, primary_key=True)
    name = db.Column(db.String(128), nullable=False)
@@ -42,7 +42,7 @@ class LenderSchema(ma.SQLAlchemyAutoSchema):
 
 class Loan(db.Model):
    """ Loan Model """
-   __tablename__ = "loan"
+   __tablename__ = "loans"
 
    id = db.Column(db.Integer, primary_key=True)
    first_name = db.Column(db.String(255))

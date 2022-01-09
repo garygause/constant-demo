@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render LenderDetails component 1`] = `ShallowWrapper {}`;
+
+exports[`should render LenderMenu component 1`] = `ShallowWrapper {}`;

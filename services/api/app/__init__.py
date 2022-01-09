@@ -85,23 +85,29 @@ loans_schema = LoanSchema(many=True)
 
 @app.route("/api")
 def test():
+   """ replace this with swagger type doc """
    return jsonify(test="success")
 
 @app.route("/api/lenders")
 def lenders_list():
    lenders = Lender.query.all()
-   #users = User.query.filter(User.id==1).all()
-   #if not users:
-   #   users = User("foo")
-   return jsonify(lenders_schema.dump(lenders))
+   response = jsonify(lenders_schema.dump(lenders))
+   # just for now for development
+   response.headers.add('Access-Control-Allow-Origin', '*')
+   return response
 
 @app.route("/api/loans")
 def loans_list():
    loans = Loan.query.all()
-   return jsonify(loans_schema.dump(loans))
+   response = jsonify(loans_schema.dump(loans))
+   # just for now for development
+   response.headers.add('Access-Control-Allow-Origin', '*')
+   return response
 
 @app.route("/api/loans/<int:lender_id>/")
 def loans_by_lender_id(lender_id):
    loans = Loan.query.filter(Loan.lender_id==lender_id).all()
-   return jsonify(loans_schema.dump(loans))
-
+   response = jsonify(loans_schema.dump(loans))
+   # just for now for development
+   response.headers.add('Access-Control-Allow-Origin', '*')
+   return response

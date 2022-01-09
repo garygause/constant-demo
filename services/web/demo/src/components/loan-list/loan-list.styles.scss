@@ -1,3 +1,11 @@
 .loan-list {
-  display: flex;
+  .center {
+    text-align: center;
+  }
+  td {
+    padding: 5px;
+  }
+  thead {
+    font-weight: bold;
+  }
 }

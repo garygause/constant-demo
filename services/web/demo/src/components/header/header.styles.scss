@@ -2,16 +2,14 @@
   height: 70px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   margin-bottom: 25px;
 
-  .logo-container {
-    height: 100%;
-    width: 70px;
-    padding: 25px;
+  .title {
+    margin: 0px;
   }
-
-  .logo {
-    width: 50px;
+  .logo-container {
+    width: 200px;
+    margin-right: 20px;
   }
 }

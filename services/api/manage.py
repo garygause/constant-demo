@@ -4,7 +4,9 @@ import csv
 
 from flask.cli import FlaskGroup
 
-from app import app, db, Lender, Loan
+from app import app, db
+from app.database.lender import Lender
+from app.database.loan import Loan
 
 cli = FlaskGroup(app)
 
@@ -25,7 +27,7 @@ def seed_db():
    db.session.add(Lender(5, "Island Lending", "100 Marginal Way", "Huntington", "NY", "11743", "6315551212"))
 
    try:
-      with open('./loans.csv', newline='') as f:
+      with open('./app/sample_data/loans.csv', newline='') as f:
           reader = csv.reader(f)
           for row in reader:
               db.session.add(Loan(
@@ -41,11 +43,16 @@ def seed_db():
 @cli.command("run_tests")
 def test():
     """Runs the unit tests."""
-    tests = unittest.TestLoader().discover('app/test', pattern='test*.py')
+    tests = unittest.TestLoader().discover('app/tests', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0
     return 1
+
+@cli.command("run")
+def run_app():
+   app.run()
+
 
 if __name__ == "__main__":
    cli()

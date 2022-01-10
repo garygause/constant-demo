@@ -12,7 +12,7 @@ services:
     ports:
       - 5000:5000
     env_file:
-      - ./.env.dev
+      - ./services/api/.env.dev
     depends_on:
      - db
 
